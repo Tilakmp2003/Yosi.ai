@@ -1,6 +1,6 @@
-# Advanced Usage Guide for yosi.js
+# Advanced Usage Guide for yosi.ai
 
-This guide covers advanced usage patterns and features of yosi.js.
+This guide covers advanced usage patterns and features of yosi.ai.
 
 ## Table of Contents
 
@@ -37,7 +37,7 @@ yosi advanced "create a Button component with primary and secondary variants" --
 
 ## Framework-Specific Code Generation
 
-yosi.js can generate code for specific frameworks by providing the framework name:
+yosi.ai can generate code for specific frameworks by providing the framework name:
 
 ### React
 
@@ -127,7 +127,7 @@ const fs = require('fs');
 
 async function generateComponents() {
   const components = ['Button', 'Card', 'Modal', 'Navbar'];
-  
+
   for (const component of components) {
     const code = await generateAdvancedCode({
       command: `create a React ${component} component`,
@@ -135,7 +135,7 @@ async function generateComponents() {
       framework: 'react',
       includeComments: true
     });
-    
+
     fs.writeFileSync(`src/components/${component}.jsx`, code);
     console.log(`Generated ${component} component`);
   }

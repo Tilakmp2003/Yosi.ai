@@ -10,13 +10,13 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-console.log('Welcome to the yosi.js installer!');
-console.log('This script will help you install yosi.js globally and set up your Gemini API key.');
+console.log('Welcome to the yosi.ai installer!');
+console.log('This script will help you install yosi.ai globally and set up your Gemini API key.');
 
 // Check if the user has a Gemini API key
 rl.question('\nDo you have a Google Gemini API key? (y/n): ', (hasKey) => {
   if (hasKey.toLowerCase() === 'n') {
-    console.log('\nYou need a Gemini API key to use yosi.js.');
+    console.log('\nYou need a Gemini API key to use yosi.ai.');
     console.log('You can get one from: https://makersuite.google.com/app/apikey');
     console.log('\nOnce you have your API key, run this installer again.');
     rl.close();
@@ -31,17 +31,17 @@ rl.question('\nDo you have a Google Gemini API key? (y/n): ', (hasKey) => {
       return;
     }
 
-    console.log('\nInstalling yosi.js globally...');
-    
+    console.log('\nInstalling yosi.ai globally...');
+
     try {
       // Install the package globally
       execSync('npm install -g .', { stdio: 'inherit' });
-      
-      console.log('\nyosi.js has been installed globally!');
-      
+
+      console.log('\nyosi.ai has been installed globally!');
+
       // Set up the API key based on the platform
       const isWindows = process.platform === 'win32';
-      
+
       if (isWindows) {
         console.log('\nTo set up your API key on Windows, run the following command:');
         console.log(`setx GEMINI_API_KEY "${apiKey}"`);
@@ -50,7 +50,7 @@ rl.question('\nDo you have a Google Gemini API key? (y/n): ', (hasKey) => {
         // For macOS and Linux
         const homeDir = process.env.HOME;
         let shellConfigFile = '';
-        
+
         if (fs.existsSync(path.join(homeDir, '.zshrc'))) {
           shellConfigFile = path.join(homeDir, '.zshrc');
         } else if (fs.existsSync(path.join(homeDir, '.bashrc'))) {
@@ -58,12 +58,12 @@ rl.question('\nDo you have a Google Gemini API key? (y/n): ', (hasKey) => {
         } else if (fs.existsSync(path.join(homeDir, '.bash_profile'))) {
           shellConfigFile = path.join(homeDir, '.bash_profile');
         }
-        
+
         if (shellConfigFile) {
           console.log(`\nAdding API key to ${shellConfigFile}...`);
-          
+
           try {
-            fs.appendFileSync(shellConfigFile, `\n# yosi.js Gemini API key\nexport GEMINI_API_KEY="${apiKey}"\n`);
+            fs.appendFileSync(shellConfigFile, `\n# yosi.ai Gemini API key\nexport GEMINI_API_KEY="${apiKey}"\n`);
             console.log(`API key added to ${shellConfigFile}`);
             console.log('\nYou may need to restart your terminal or run the following command:');
             console.log(`source ${shellConfigFile}`);
@@ -77,14 +77,14 @@ rl.question('\nDo you have a Google Gemini API key? (y/n): ', (hasKey) => {
           console.log(`export GEMINI_API_KEY="${apiKey}"`);
         }
       }
-      
-      console.log('\nYou can now use yosi.js by running the "yosi" command!');
+
+      console.log('\nYou can now use yosi.ai by running the "yosi" command!');
       console.log('For example: yosi "create a function named hello that returns Hello World"');
-      
+
     } catch (error) {
       console.error('Error during installation:', error.message);
     }
-    
+
     rl.close();
   });
 });

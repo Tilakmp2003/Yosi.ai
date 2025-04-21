@@ -1,6 +1,6 @@
-# API Usage Guide for yosi.js
+# API Usage Guide for yosi.ai
 
-This guide explains how to use yosi.js programmatically in your Node.js applications.
+This guide explains how to use yosi.ai programmatically in your Node.js applications.
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ This guide explains how to use yosi.js programmatically in your Node.js applicat
 ## Installation
 
 ```bash
-npm install yosi
+npm install yosi.ai
 ```
 
 ## Basic Code Generation
@@ -29,12 +29,12 @@ async function generateSimpleCode() {
     // Generate a simple function
     const command = "create a function that calculates the factorial of a number";
     const language = "javascript";
-    
+
     const generatedCode = await generateCode(command, language);
-    
+
     // Display the generated code
     displayCode(generatedCode, language);
-    
+
     // Save the generated code to a file
     saveToFile(generatedCode, 'factorial.js');
   } catch (error) {
@@ -62,16 +62,16 @@ async function generateAdvancedExample() {
       includeComments: true,
       model: "gemini-2.5-flash-preview-04-17" // Optional: specify the model
     });
-    
+
     saveToFile(reactCode, 'Button.jsx');
-    
+
     // Generate code with existing code as a base
     const existingCode = `
 function UserProfile() {
   // TODO: Implement user profile
 }
 `;
-    
+
     const extendedCode = await generateAdvancedCode({
       command: "complete this UserProfile component to display user's name, email, and avatar",
       language: "jsx",
@@ -79,7 +79,7 @@ function UserProfile() {
       existingCode: existingCode,
       includeComments: true
     });
-    
+
     saveToFile(extendedCode, 'UserProfile.jsx');
   } catch (error) {
     console.error('Error:', error.message);
@@ -104,7 +104,7 @@ async function modifyExistingCode() {
       command: 'convert to ES6',
       outputPath: 'src/utils.es6.js'
     });
-    
+
     console.log('Code refactored successfully!');
   } catch (error) {
     console.error('Error:', error.message);
@@ -129,7 +129,7 @@ async function targetedCodeModification() {
       targetSection: 'authenticateUser',  // Target a specific function
       preserveStructure: true             // Preserve the overall code structure
     });
-    
+
     console.log('Function updated with error handling!');
   } catch (error) {
     console.error('Error:', error.message);
@@ -153,7 +153,7 @@ async function completeCodeRewrite() {
       outputPath: 'src/modern.js',
       preserveStructure: false  // Allow complete rewrite
     });
-    
+
     console.log('Code completely modernized!');
   } catch (error) {
     console.error('Error:', error.message);
@@ -170,7 +170,7 @@ async function analyzeMyCode() {
   try {
     // Analyze a file for potential improvements
     const analysis = await analyzeCode('src/utils.js');
-    
+
     console.log('Code Analysis:');
     console.log(analysis);
   } catch (error) {
@@ -193,7 +193,7 @@ async function createProject() {
       description: 'A sample React application',
       outputDir: './projects'
     });
-    
+
     console.log(`Project created at: ${projectDir}`);
   } catch (error) {
     console.error('Error:', error.message);
@@ -214,7 +214,7 @@ async function generateMyTests() {
       testFramework: 'jest',
       outputPath: 'tests/utils.test.js'
     });
-    
+
     // Generate tests for a directory
     const testFiles = await generateTestSuite({
       directory: 'src/components',
@@ -222,7 +222,7 @@ async function generateMyTests() {
       outputDirectory: 'tests/components',
       extensions: ['.js', '.jsx']
     });
-    
+
     console.log(`Generated ${testFiles.length} test files`);
   } catch (error) {
     console.error('Error:', error.message);
@@ -241,11 +241,11 @@ try {
     command: 'optimize',
     outputPath: 'src/utils.optimized.js'
   });
-  
+
   console.log('Success!');
 } catch (error) {
   console.error('Error:', error.message);
-  
+
   // Check for specific error types
   if (error.message.includes('API key')) {
     console.error('Please check your Gemini API key');

@@ -1,4 +1,4 @@
-# yosi.js
+# yosi.ai
 
 An AI-powered code generation tool using Google's Gemini API.
 
@@ -31,7 +31,7 @@ node install.js
 ```
 
 The installer will:
-1. Install yosi.js globally
+1. Install yosi.ai globally
 2. Help you set up your Gemini API key
 
 ### Manual Installation
@@ -39,18 +39,18 @@ The installer will:
 #### Global Installation
 
 ```bash
-npm install -g yosi
+npm install -g yosi.ai
 ```
 
 #### Local Installation
 
 ```bash
-npm install yosi
+npm install yosi.ai
 ```
 
 ## Setup
 
-Before using yosi.js, you need to set up your Gemini API key:
+Before using yosi.ai, you need to set up your Gemini API key:
 
 1. Get a Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
 2. Set the API key as an environment variable:
@@ -181,7 +181,7 @@ For more detailed information, check out these guides:
 
 ## Examples
 
-The `examples` directory contains sample code showing how to use yosi.js for different scenarios:
+The `examples` directory contains sample code showing how to use yosi.ai for different scenarios:
 
 ### Basic Examples
 - `basic-usage.js` - Simple example of generating JavaScript code

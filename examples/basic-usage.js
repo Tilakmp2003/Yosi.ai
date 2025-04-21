@@ -1,4 +1,4 @@
-// Example of using yosi.js programmatically
+// Example of using yosi.ai programmatically
 
 const { generateCode } = require('../src/ai-handler');
 const { saveToFile, displayCode } = require('../src/output-handler');
@@ -8,14 +8,14 @@ async function example() {
     // Generate a simple function
     const command = "create a function named design that logs 'Hello, World!'";
     const language = "javascript";
-    
+
     console.log(`Generating code for: "${command}" in ${language}`);
-    
+
     const generatedCode = await generateCode(command, language);
-    
+
     // Display the generated code
     displayCode(generatedCode, language);
-    
+
     // Save the generated code to a file
     saveToFile(generatedCode, 'design.js');
     console.log('Code saved to design.js');

@@ -1,6 +1,6 @@
-# Troubleshooting Guide for yosi.js
+# Troubleshooting Guide for yosi.ai
 
-This guide helps you troubleshoot common issues with yosi.js.
+This guide helps you troubleshoot common issues with yosi.ai.
 
 ## Table of Contents
 

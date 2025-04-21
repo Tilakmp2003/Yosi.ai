@@ -1,4 +1,4 @@
-# Changelog for yosi.js
+# Changelog for yosi.ai
 
 All notable changes to this project will be documented in this file.
 
@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Future features will be listed here
+
+## [1.0.0] - 2023-05-15
+
+### Changed
+- Renamed package from 'yosi' to 'yosi.ai'
+- Updated all documentation to reflect the new name
+- Reset version number to 1.0.0 for the new package name
 
 ## [1.0.5] - 2023-04-21
 
@@ -31,7 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2023-04-21
 
 ### Added
-- Initial release of yosi.js
+- Initial release of yosi.ai
 - Basic code generation with Gemini API
 - Advanced code generation with framework support
 - Project scaffolding for React, Express, and full-stack applications

@@ -1,6 +1,6 @@
-# Use Cases for yosi.js
+# Use Cases for yosi.ai
 
-This guide covers common use cases for yosi.js in different development scenarios.
+This guide covers common use cases for yosi.ai in different development scenarios.
 
 ## Table of Contents
 

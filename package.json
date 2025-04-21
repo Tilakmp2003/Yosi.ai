@@ -1,6 +1,6 @@
 {
-  "name": "yosi",
-  "version": "1.0.6",
+  "name": "yosi.ai",
+  "version": "1.0.0",
   "description": "AI-powered code generation tool using Google's Gemini API",
   "repository": {
     "type": "git",
@@ -37,7 +37,10 @@
     "ai",
     "code-generation",
     "gemini",
-    "cli"
+    "cli",
+    "yosi.ai",
+    "code-generator",
+    "ai-code-generation"
   ],
   "author": "Tilak MP <tilakmp@gmail.com>",
   "license": "MIT",

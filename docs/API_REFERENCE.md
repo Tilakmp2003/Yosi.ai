@@ -1,6 +1,6 @@
-# yosi.js API Reference
+# yosi.ai API Reference
 
-This document provides detailed information about the yosi.js API for programmatic usage.
+This document provides detailed information about the yosi.ai API for programmatic usage.
 
 ## Table of Contents
 

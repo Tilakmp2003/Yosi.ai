@@ -1,6 +1,6 @@
-# Language Guide for yosi.js
+# Language Guide for yosi.ai
 
-This guide covers how to use yosi.js with different programming languages.
+This guide covers how to use yosi.ai with different programming languages.
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@ This guide covers how to use yosi.js with different programming languages.
 
 ## JavaScript
 
-JavaScript is the default language for yosi.js.
+JavaScript is the default language for yosi.ai.
 
 ### Basic Function
 
