@@ -1,0 +1,40 @@
+# Development files
+.git
+.github
+.vscode
+.idea
+.DS_Store
+*.log
+*.swp
+*.swo
+
+# Test files
+tests/
+coverage/
+jest.config.js
+.nyc_output/
+test-*.js
+advanced-features-test-output/
+test-output/
+form*.js
+
+# We want to include examples in the npm package
+# examples/
+
+# Build files
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Misc
+.editorconfig
+.eslintrc
+.eslintignore
+.prettierrc
+.prettierignore
+.travis.yml
+.gitlab-ci.yml
+.circleci/
+appveyor.yml
+install.js

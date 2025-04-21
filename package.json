@@ -1,0 +1,50 @@
+{
+  "name": "yosi",
+  "version": "1.0.2",
+  "description": "AI-powered code generation tool using Google's Gemini API",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tilakmp2003/Yosi.js.git"
+  },
+  "homepage": "https://github.com/Tilakmp2003/Yosi.js",
+  "bugs": {
+    "url": "https://github.com/Tilakmp2003/Yosi.js/issues"
+  },
+  "main": "index.js",
+  "bin": {
+    "yosi": "./index.js"
+  },
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No tests specified\" && exit 0",
+    "prepublishOnly": "npm run lint",
+    "publish": "node scripts/publish.js",
+    "lint": "echo 'No linting configured'"
+  },
+  "files": [
+    "index.js",
+    "src/",
+    "docs/",
+    "examples/",
+    "scripts/publish.js",
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "ai",
+    "code-generation",
+    "gemini",
+    "cli"
+  ],
+  "author": "Tilak MP <tilakmp@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "chalk": "^4.1.2",
+    "commander": "^13.1.0",
+    "inquirer": "^8.2.5"
+  }
+}
