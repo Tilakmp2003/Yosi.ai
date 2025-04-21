@@ -26,7 +26,6 @@ Clone the repository and run the installer script:
 
 ```bash
 git clone https://github.com/Tilakmp2003/Yosi.ai.git
-cd yosi.js
 node install.js
 ```
 
