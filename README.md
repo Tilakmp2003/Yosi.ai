@@ -25,7 +25,7 @@ An AI-powered code generation tool using Google's Gemini API.
 Clone the repository and run the installer script:
 
 ```bash
-git clone https://github.com/Tilakmp2003/Yosi.js.git
+git clone https://github.com/Tilakmp2003/Yosi.ai.git
 cd yosi.js
 node install.js
 ```
