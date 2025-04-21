@@ -34,12 +34,33 @@ function saveToFile(code, filePath) {
     let cleanedCode = code;
     console.log('Original code starts with:', code.substring(0, 30));
 
-    // Remove markdown code block markers if present
-    cleanedCode = cleanedCode.replace(/^```[a-z]*\n/g, '');
-    cleanedCode = cleanedCode.replace(/\n```$/g, '');
+    // More aggressive cleaning of markdown formatting
+    // First, try to extract code from markdown blocks
+    if (code.includes('```')) {
+      console.log('Markdown code blocks detected, cleaning up...');
 
-    // Remove any nested code blocks (sometimes the AI generates nested markdown)
-    cleanedCode = cleanedCode.replace(/```[a-z]*\n([\s\S]*?)\n```/g, '$1');
+      // Handle double-nested code blocks (```javascript\n```javascript)
+      const doubleNestedPattern = /```[a-z]*\n```[a-z]*\n([\s\S]*?)\n```\n```/g;
+      if (doubleNestedPattern.test(code)) {
+        console.log('Detected double-nested code blocks');
+        cleanedCode = code.replace(doubleNestedPattern, '$1');
+      }
+      // Handle standard code blocks
+      else if (/```[a-z]*\n([\s\S]*?)\n```/g.test(code)) {
+        console.log('Detected standard code blocks');
+        // Extract content from the first code block
+        const match = /```[a-z]*\n([\s\S]*?)\n```/g.exec(code);
+        if (match && match[1]) {
+          cleanedCode = match[1];
+        } else {
+          // Fallback: just strip all markdown markers
+          cleanedCode = code.replace(/```[a-z]*/g, '').replace(/```/g, '');
+        }
+      }
+    }
+
+    // Final cleanup to ensure no markdown remains
+    cleanedCode = cleanedCode.trim();
 
     console.log('Cleaned code starts with:', cleanedCode.substring(0, 30));
     console.log('Cleaned code length:', cleanedCode.length);
@@ -51,6 +72,7 @@ function saveToFile(code, filePath) {
     // Return success message
     return `Code saved to ${filePath}`;
   } catch (error) {
+    console.error('Error in saveToFile:', error);
     throw new Error(`Failed to save file: ${error.message}`);
   }
 }

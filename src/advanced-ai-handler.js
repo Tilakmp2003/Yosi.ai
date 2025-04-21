@@ -79,7 +79,10 @@ ${commentInstruction}
 
 The code should be production-ready, following best practices for ${language}.
 If you are modifying existing code, focus on making precise, targeted changes while preserving the overall structure.
-Please provide ONLY the complete code without any explanations or markdown formatting.
+
+IMPORTANT: Please provide ONLY the complete code without any explanations.
+DO NOT use markdown formatting or code blocks (no \`\`\` markers).
+Just return the raw code directly.
 `;
 
     // Generate content

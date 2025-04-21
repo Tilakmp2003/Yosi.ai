@@ -84,7 +84,7 @@ This is particularly useful for:
 
 ## Generating Complete Projects
 
-You can use yosi.js to generate complete project structures:
+You can use yosi.ai to generate complete project structures:
 
 ### Example: Todo Application
 
@@ -117,9 +117,9 @@ You can use yosi.js in npm scripts:
 }
 ```
 
-### Using yosi.js Programmatically
+### Using yosi.ai Programmatically
 
-You can use yosi.js programmatically in your Node.js applications:
+You can use yosi.ai programmatically in your Node.js applications:
 
 ```javascript
 const { generateCode, generateAdvancedCode } = require('yosi');

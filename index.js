@@ -54,7 +54,7 @@ program
   .option('-e, --existing <file>', 'File with existing code to extend or modify')
   .option('-c, --comments', 'Include comments in the generated code')
   .option('-m, --model <model>', `AI model to use (${MODEL_CHOICES.join(', ')})`, 'gemini-2.5-flash-preview-04-17')
-  .option('-o, --output <file>', 'Save the generated code to a file')
+  .option('-o, --output <file>', 'Save the generated code to a file') // Add this line
   .option('-v, --verbose', 'Show detailed output')
   .argument('<command>', 'Natural language command to generate code')
   .action(async (command, options) => {
@@ -70,6 +70,18 @@ program
         }
       }
 
+      // Manually parse for the output file flag as a workaround
+      let outputFile = options.output; // Start with Commander's parsed value (likely undefined)
+      const outputIndex = process.argv.indexOf('-o');
+      const outputLongIndex = process.argv.indexOf('--output');
+
+      if (outputIndex > -1 && outputIndex + 1 < process.argv.length) {
+        outputFile = process.argv[outputIndex + 1];
+      } else if (outputLongIndex > -1 && outputLongIndex + 1 < process.argv.length) {
+        outputFile = process.argv[outputLongIndex + 1];
+      }
+
+
       if (options.verbose) {
         console.log('Generating advanced code for:', command);
         console.log('Language:', options.language);
@@ -77,7 +89,7 @@ program
         if (options.framework) console.log('Framework:', options.framework);
         if (options.existing) console.log('Extending existing code from:', options.existing);
         if (options.comments) console.log('Including comments in the generated code');
-        if (options.output) console.log('Output file:', options.output);
+        if (outputFile) console.log('Output file:', outputFile); // Use outputFile here
       }
 
       const generatedCode = await generateAdvancedCode({
@@ -89,18 +101,42 @@ program
         model: options.model
       });
 
-      if (options.output) {
-        console.log('Attempting to save code to:', options.output);
+      // Always display the code first
+      displayCode(generatedCode, options.language);
+
+      // Use the manually determined outputFile for saving
+      if (outputFile) {
+        console.log('\nAttempting to save code to:', outputFile); // Use outputFile here
         try {
-          const message = saveToFile(generatedCode, options.output);
-          console.log(message);
+          // Log the first 100 characters of the code for debugging
+          console.log('Code preview (first 100 chars):', generatedCode.substring(0, 100));
+
+          // Check if code contains markdown formatting
+          if (generatedCode.includes('```')) {
+            console.log('Warning: Code contains markdown formatting, attempting to clean...');
+          }
+
+          // Force synchronous execution and error handling
+          try {
+            const message = saveToFile(generatedCode, outputFile); // Use outputFile here
+            console.log(message);
+
+            // Verify the file was created
+            const fs = require('fs');
+            if (fs.existsSync(outputFile)) { // Use outputFile here
+              console.log('File verified to exist at:', outputFile); // Use outputFile here
+              console.log('File content length:', fs.readFileSync(outputFile, 'utf8').length); // Use outputFile here
+            } else {
+              console.error('ERROR: File was not created despite no errors!');
+            }
+          } catch (innerError) {
+            console.error('Inner error in file saving:', innerError);
+            console.error('Stack trace:', innerError.stack);
+          }
         } catch (saveError) {
           console.error('Error saving file:', saveError.message);
-          // Still display the code if saving fails
-          displayCode(generatedCode, options.language);
+          console.error('Error details:', saveError.stack);
         }
-      } else {
-        displayCode(generatedCode, options.language);
       }
     } catch (error) {
       console.error('Error:', error.message);

@@ -74,6 +74,16 @@ $env:GEMINI_API_KEY="your_api_key_here"
 yosi "create a function named design that logs 'Hello, World!'"
 ```
 
+### Basic vs. Advanced Usage
+
+The main difference between the `yosi` command and the `yosi advanced` command lies in the options they provide and the level of detail they send to the AI model.
+
+The basic `yosi` command is designed for straightforward code generation requests and supports fundamental options such as specifying the language, model, output file, and verbose output.
+
+The `yosi advanced` command is intended for more complex code generation scenarios where you need to provide additional context to the AI. It includes all the options of the basic command plus advanced options for specifying a framework, providing existing code to extend or modify, and instructing the AI to include comments.
+
+In essence, `yosi advanced` allows you to give the AI more specific instructions and context, leading to potentially more tailored and complex code outputs, especially when working with existing codebases or specific frameworks.
+
 ### Specify Programming Language
 
 ```bash
