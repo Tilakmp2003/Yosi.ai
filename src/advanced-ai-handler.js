@@ -46,7 +46,7 @@ async function generateAdvancedCode(options) {
       frameworkContext = `The code should use the ${framework} framework.`;
     }
 
-    // Build existing code context
+    // Build existing code context with improved instructions for editing
     let codeContext = '';
     if (existingCode) {
       codeContext = `
@@ -55,6 +55,12 @@ Here is the existing code that should be extended or modified:
 \`\`\`${language}
 ${existingCode}
 \`\`\`
+
+When modifying existing code:
+1. Preserve the overall structure and organization of the code
+2. Maintain function signatures, class definitions, and variable names unless explicitly asked to change them
+3. Make targeted changes rather than rewriting everything
+4. Return the complete code with your modifications, not just the changed parts
 `;
     }
 
@@ -72,14 +78,21 @@ ${codeContext}
 ${commentInstruction}
 
 The code should be production-ready, following best practices for ${language}.
-Please provide ONLY the code without any explanations or markdown formatting.
+If you are modifying existing code, focus on making precise, targeted changes while preserving the overall structure.
+Please provide ONLY the complete code without any explanations or markdown formatting.
 `;
 
     // Generate content
-    const result = await aiModel.generateContent(prompt);
-    const text = result.response.text();
-
-    return text.trim();
+    console.log('Sending prompt to Gemini API...');
+    try {
+      const result = await aiModel.generateContent(prompt);
+      const text = result.response.text();
+      console.log('Received response from Gemini API, length:', text.length);
+      return text.trim();
+    } catch (apiError) {
+      console.error('Gemini API error:', apiError.message);
+      throw apiError;
+    }
   } catch (error) {
     if (error.message.includes('API key')) {
       throw error;

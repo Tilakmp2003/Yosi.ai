@@ -138,6 +138,9 @@ program
   .description('Refactor existing code')
   .option('-f, --file <file>', 'File to refactor')
   .option('-o, --output <file>', 'Output file (defaults to overwriting the input file)')
+  .option('-t, --target <section>', 'Target specific section/function/class to refactor')
+  .option('-p, --preserve-structure', 'Preserve the overall code structure', true)
+  .option('-v, --verbose', 'Show detailed output')
   .argument('<command>', 'Refactoring command (e.g., "optimize", "add comments", "convert to ES6")')
   .action(async (command, options) => {
     try {
@@ -146,10 +149,28 @@ program
         process.exit(1);
       }
 
+      if (options.verbose) {
+        console.log('Refactoring code in:', options.file);
+        console.log('Refactoring command:', command);
+        if (options.target) console.log('Target section:', options.target);
+        console.log('Preserving structure:', options.preserveStructure ? 'Yes' : 'No');
+        if (options.output) console.log('Output file:', options.output);
+      }
+
+      // Make sure output path is correctly passed
+      const outputPath = options.output || options.file;
+
+      if (options.verbose) {
+        console.log('Output will be saved to:', outputPath);
+        console.log('options.output:', options.output);
+      }
+
       const refactoredCode = await refactorCode({
         filePath: options.file,
         command,
-        outputPath: options.output
+        outputPath,
+        targetSection: options.target,
+        preserveStructure: options.preserveStructure
       });
 
       console.log(`Code refactored successfully${options.output ? ` and saved to ${options.output}` : ''}`);

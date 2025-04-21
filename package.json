@@ -1,6 +1,6 @@
 {
   "name": "yosi",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "AI-powered code generation tool using Google's Gemini API",
   "repository": {
     "type": "git",

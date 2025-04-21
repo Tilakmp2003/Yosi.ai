@@ -49,7 +49,7 @@ async function createProject() {
     description: 'A sample React application',
     outputDir: './projects'
   });
-  
+
   console.log(`Project created at: ${projectDir}`);
 }
 ```
@@ -61,6 +61,14 @@ yosi.js can refactor existing code to improve it or change its style:
 ```bash
 yosi refactor --file path/to/file.js "convert to ES6" --output path/to/output.js
 ```
+
+### Refactoring Options
+
+- `-f, --file <file>`: File to refactor (required)
+- `-o, --output <file>`: Output file (defaults to overwriting the input file)
+- `-t, --target <section>`: Target specific section/function/class to refactor
+- `-p, --preserve-structure`: Preserve the overall code structure (default: true)
+- `-v, --verbose`: Show detailed output
 
 ### Common Refactoring Commands
 
@@ -81,6 +89,12 @@ yosi refactor --file src/app.js "optimize"
 
 # Add comments to a file
 yosi refactor --file src/components/Button.jsx "add comments" --output src/components/Button.commented.jsx
+
+# Target a specific function for refactoring
+yosi refactor --file src/utils.js "optimize" --target "calculateTotal" --verbose
+
+# Refactor without preserving structure (complete rewrite)
+yosi refactor --file src/legacy.js "modernize" --preserve-structure false --output src/modern.js
 ```
 
 ### Programmatic Usage
@@ -92,7 +106,9 @@ async function refactorMyCode() {
   const refactoredCode = await refactorCode({
     filePath: 'src/utils.js',
     command: 'convert to ES6',
-    outputPath: 'src/utils.es6.js'
+    outputPath: 'src/utils.es6.js',
+    targetSection: 'calculateTotal',  // Optional: target specific section
+    preserveStructure: true           // Optional: preserve code structure
   });
 }
 ```
@@ -208,7 +224,7 @@ async function generateMyTests() {
     testFramework: 'jest',
     outputPath: 'src/utils.test.js'
   });
-  
+
   // Generate tests for a directory
   const testFiles = await generateTestSuite({
     directory: 'src/components',

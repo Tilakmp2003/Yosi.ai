@@ -10,6 +10,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Future features will be listed here
 
+## [1.0.5] - 2023-04-21
+
+### Added
+- Enhanced code editing functionality with targeted modifications
+- Ability to preserve code structure during refactoring
+- Improved error handling in refactoring operations
+- Better AI prompting for more precise code modifications
+- New API documentation for code modification
+
+### Changed
+- Refactored the refactorCode function to support targeted modifications
+- Updated CLI interface with new options for refactoring
+- Improved markdown code block handling in generated code
+
+### Fixed
+- Fixed issues with output file path handling
+- Fixed issues with code editing not preserving structure
+
 ## [1.0.0] - 2023-04-21
 
 ### Added
